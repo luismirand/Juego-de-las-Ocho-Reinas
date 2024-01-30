@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/styles.css">
-    <script src="./js/script.js"></script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="./js/script.js"></script>
 </head>
 
-  <body>
+<body>
+  <div class="chessboard-container">
+    <h1>Juego de las 8 reinas</h1>
+    <div class="game-container">
+      <div class="options-container">
+        <select id="solucionesReinas" onchange="soluciones(value)">
+          <option value="1">Solucion 1</option>
+          <option value="2">Solucion 2</option>
+          <option value="3">Solucion 3</option>
+          <option value="4">Solucion 4</option>
+          <option value="5">Solucion 5</option>
+          <option value="6">Solucion 6</option>
+        </select>
+      </div>
+    
+      <label for="" id="reinasPorColocar">Reinas por colocar: 8 <br></label>
+      <label for="" id="reinasColocadas">Reinas colocadas: 0<br></label>
+
     <table border="1" id="tabla">
-      
+
       <tr>
         <td onclick="colocarReina(this)"></td>
         <td onclick="colocarReina(this)"></td>
@@ -100,17 +118,10 @@
       </tr>
     </table>
 
-    <select id="solucionesReinas" onchange="soluciones(value)">
-      <option value="1">Solucion 1</option>
-      <option value="2">Solucion 2</option>
-      <option value="Solucion 3">Solucion 3</option>
-      <option value="Solucion 4">Solucion 4</option>
-      <option value="Solucion 5">Solucion 5</option>
-      <option value="Solucion 6">Solucion 6</option>
-    </select>
 
-    <label for="" id="reinasPorColocar">Reinas por colocar: 8 <br></label>
-    <label for="" id="reinasColocadas">Reinas colocadas: 0<br></label>
-    
-  </body>
+  </div>
+</div>
+
+</body>
+
 </html>

@@ -14,12 +14,12 @@ function colocarReina(celda) {
       //alert(renglon + " " + columna);
       for (let i = 0; i < 8; i++) {
         if (columna != i) {
-          tablero.rows[renglon].cells[i].removeAttribute("onclick");
-          tablero.rows[renglon].cells[i].style.backgroundColor = "#ff0000";
+          
+          incrementQueenCount(tablero.rows[renglon].cells[i]);
         }
+        
         if (renglon != i) {
-          tablero.rows[i].cells[columna].removeAttribute("onclick");
-          tablero.rows[i].cells[columna].style.backgroundColor = "#ff0000";
+          incrementQueenCount(tablero.rows[i].cells[columna]);
         }
       }
       /* Recorremos diagonales */
@@ -28,8 +28,8 @@ function colocarReina(celda) {
       var c = columna;
 
       while (r >= 0 && c < 8) {
-        //tablero.rows[r].cells[c].removeAttribute("onclick");
-        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        incrementQueenCount(tablero.rows[r].cells[c]);
+
         r--;
         c++;
       }
@@ -38,7 +38,7 @@ function colocarReina(celda) {
       c = columna - 1;
 
       while (c >= 0 && r < 8) {
-        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        incrementQueenCount(tablero.rows[r].cells[c]);
         r++;
         c--;
       }
@@ -49,7 +49,7 @@ function colocarReina(celda) {
       c = columna;
 
       while (r >= 0 && c >= 0) {
-        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        incrementQueenCount(tablero.rows[r].cells[c]);
         r--;
         c--;
       }
@@ -60,7 +60,7 @@ function colocarReina(celda) {
       c = columna;
 
       while (r < 8 && c < 8) {
-        tablero.rows[r].cells[c].style.backgroundColor = "#ff0000";
+        incrementQueenCount(tablero.rows[r].cells[c]);
         r++;
         c++;
       }
@@ -76,12 +76,11 @@ function colocarReina(celda) {
 
     for (let i = 0; i < 8; i++) {
       if (columna != i) {
-        tablero.rows[renglon].cells[i].setAttribute("onclick", "colocarReina(this)");
-        tablero.rows[renglon].cells[i].style.backgroundColor = "";
+        decrementQueenCount(tablero.rows[renglon].cells[i]);
+
       }
       if (renglon != i) {
-        tablero.rows[i].cells[columna].setAttribute("onclick", "colocarReina(this)");
-        tablero.rows[i].cells[columna].style.backgroundColor = "";
+        decrementQueenCount(tablero.rows[i].cells[columna]);
       }
     }
 
@@ -90,8 +89,8 @@ function colocarReina(celda) {
     var c = columna;
 
     while (r >= 0 && c < 8) {
-      tablero.rows[r].cells[c].setAttribute("onclick", "colocarReina(this)");
-      tablero.rows[r].cells[c].style.backgroundColor = "";
+      decrementQueenCount(tablero.rows[r].cells[c]);
+
       r--;
       c++;
     }
@@ -100,8 +99,8 @@ function colocarReina(celda) {
     c = columna - 1;
 
     while (c >= 0 && r < 8) {
-      tablero.rows[r].cells[c].setAttribute("onclick", "colocarReina(this)");
-      tablero.rows[r].cells[c].style.backgroundColor = "";
+      decrementQueenCount(tablero.rows[r].cells[c]);
+
       r++;
       c--;
     }
@@ -110,8 +109,8 @@ function colocarReina(celda) {
     c = columna;
 
     while (r >= 0 && c >= 0) {
-      tablero.rows[r].cells[c].setAttribute("onclick", "colocarReina(this)");
-      tablero.rows[r].cells[c].style.backgroundColor = "";
+      decrementQueenCount(tablero.rows[r].cells[c]);
+
       r--;
       c--;
     }
@@ -120,17 +119,16 @@ function colocarReina(celda) {
     c = columna;
 
     while (r < 8 && c < 8) {
-      tablero.rows[r].cells[c].setAttribute("onclick", "colocarReina(this)");
-      tablero.rows[r].cells[c].style.backgroundColor = "";
+      decrementQueenCount(tablero.rows[r].cells[c]);
+
       r++;
       c++;
     }
-
     noReinas++;
   }
 
   document.getElementById("reinasPorColocar").innerHTML = "Reinas por colocar: " + noReinas;
-  document.getElementById("reinasColocadas").innerHTML = "Reinas Colocadas: " + -(noReinas - 8);
+  document.getElementById("reinasColocadas").innerHTML = "Reinas colocadas: " + -(noReinas - 8);
 
 }
 
@@ -139,4 +137,24 @@ function soluciones(value) {
   var celdas = document.getElementsByTagName("tabla");
   celda.rows[0].cells[0].style = "background-image: url(./img/reina.png); background-size:cover;";
 
+}
+
+function incrementQueenCount(celda) {
+  var queenCount = parseInt(celda.getAttribute('data-queen-count') || '0');
+  queenCount++;
+  celda.setAttribute('data-queen-count', queenCount.toString());
+  if (queenCount == 1) {
+    //celda.removeAttribute("onclick");
+    celda.style.backgroundColor = "#ff0000";
+  }
+}
+
+function decrementQueenCount(celda) {
+  var queenCount = parseInt(celda.getAttribute('data-queen-count') || '0');
+  queenCount--;
+  celda.setAttribute('data-queen-count', queenCount.toString());
+  if (queenCount == 0) {
+    celda.setAttribute("onclick", "colocarReina(this)");
+    celda.style.backgroundColor = "";
+  }
 }
