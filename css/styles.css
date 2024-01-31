@@ -1,65 +1,8 @@
-table {
-    border-collapse: collapse;
-    /*definimos el color de la linea*/
-    border: 1px solid;
-  }
-  tr {
-    border: 1px solid;
-    height: 65px;
-  }
-  td {
-    border: 1px solid;
-    width: 65px;
-  }
-
-  tr:nth-child(even) td:nth-child(even), tr:nth-child(odd) td:nth-child(odd)
-        {
-            background: #10a7d9;
-        }
-        
-        tr:nth-child(odd) td:nth-child(even), tr:nth-child(even) td:nth-child(odd) 
-        {
-            background: #d3e9ff;
-        }
-
-
-  .chessboard-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .chessboard-container h1 {
-    text-align: center;
-  }
-  
-  h1, label, option {
-    font-family: 'Arial', sans-serif; 
-  }
-
-  .chessboard-container h1, 
-  .chessboard-container label, 
-  .chessboard-container option {
-    font-family: 'Arial', sans-serif; 
-  }
-
-  .game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-  }
-  
-  .options-container {
-    display: flex;
-  }
-  #reinasColocadas {
-    margin-bottom: 20px; 
-  }
-
-  
-  #resetButton {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+table{border-collapse:collapse;border:1px
+  solid}tr{border:1px
+  solid;height:65px}td{border:1px
+  solid;width:65px}tr:nth-child(even) td:nth-child(even), tr:nth-child(odd) td:nth-child(odd){background:#10a7d9}tr:nth-child(odd) td:nth-child(even), tr:nth-child(even) td:nth-child(odd){background:#d3e9ff}.chessboard-container{display:flex;flex-direction:column;justify-content:center;align-items:center;margin-top:10px}.chessboard-container
+  h1{text-align:center}h1,label,option{font-family:'Arial',sans-serif}.chessboard-container h1,
+  .chessboard-container label,
+  .chessboard-container
+  option{font-family:'Arial',sans-serif}.game-container{display:flex;flex-direction:column;align-items:center}.options-container{display:flex}#reinasColocadas{margin-bottom:20px}#resetButton{margin-top:10px;margin-bottom:10px}
