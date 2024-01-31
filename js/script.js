@@ -1,7 +1,6 @@
 var noReinas = 8;
 
 function colocarReina(celda) {
-  /*alert("Le dieron click a la celda"+celda);*/
 
   if (window.getComputedStyle(celda).backgroundImage == "none") {
 
@@ -86,11 +85,9 @@ function colocarReina(celda) {
     for (let i = 0; i < 8; i++) {
       if (columna != i) {
         decrementQueenCount(tablero.rows[renglon].cells[i]);
-        //tablero.rows[renglon].cells[i].removeAttribute("onclick");
       }
       if (renglon != i) {
         decrementQueenCount(tablero.rows[i].cells[columna]);
-        //tablero.rows[renglon].cells[i].removeAttribute("onclick");
       }
     }
 
