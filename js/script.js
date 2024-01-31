@@ -10,17 +10,20 @@ function colocarReina(celda) {
       var renglon = celda.parentElement.rowIndex;
       var columna = celda.cellIndex;
       /* Bloqueamos renglon */
+      
       var tablero = document.getElementById("tabla");
       //alert(renglon + " " + columna);
       for (let i = 0; i < 8; i++) {
         if (columna != i) {
+          tablero.rows[renglon].cells[i].removeAttribute("onclick");
           incrementQueenCount(tablero.rows[renglon].cells[i]);
-          
+
         }
-        
+
         if (renglon != i) {
+          tablero.rows[i].cells[columna].removeAttribute("onclick");
           incrementQueenCount(tablero.rows[i].cells[columna]);
-          
+
         }
       }
       /* Recorremos diagonales */
@@ -30,7 +33,7 @@ function colocarReina(celda) {
 
       while (r >= 0 && c < 8) {
         incrementQueenCount(tablero.rows[r].cells[c]);
-
+        tablero.rows[r].cells[c].onclick = null;
         r--;
         c++;
       }
@@ -40,6 +43,7 @@ function colocarReina(celda) {
 
       while (c >= 0 && r < 8) {
         incrementQueenCount(tablero.rows[r].cells[c]);
+        tablero.rows[r].cells[c].onclick = null;
         r++;
         c--;
       }
@@ -51,6 +55,7 @@ function colocarReina(celda) {
 
       while (r >= 0 && c >= 0) {
         incrementQueenCount(tablero.rows[r].cells[c]);
+        tablero.rows[r].cells[c].onclick = null;
         r--;
         c--;
       }
@@ -62,9 +67,12 @@ function colocarReina(celda) {
 
       while (r < 8 && c < 8) {
         incrementQueenCount(tablero.rows[r].cells[c]);
+        tablero.rows[r].cells[c].onclick = null;
         r++;
         c++;
       }
+
+
 
       noReinas--;
     }
@@ -92,7 +100,6 @@ function colocarReina(celda) {
 
     while (r >= 0 && c < 8) {
       decrementQueenCount(tablero.rows[r].cells[c]);
-
       r--;
       c++;
     }
@@ -102,7 +109,6 @@ function colocarReina(celda) {
 
     while (c >= 0 && r < 8) {
       decrementQueenCount(tablero.rows[r].cells[c]);
-
       r++;
       c--;
     }
@@ -112,7 +118,6 @@ function colocarReina(celda) {
 
     while (r >= 0 && c >= 0) {
       decrementQueenCount(tablero.rows[r].cells[c]);
-
       r--;
       c--;
     }
@@ -122,7 +127,6 @@ function colocarReina(celda) {
 
     while (r < 8 && c < 8) {
       decrementQueenCount(tablero.rows[r].cells[c]);
-
       r++;
       c++;
     }
@@ -132,7 +136,11 @@ function colocarReina(celda) {
   document.getElementById("reinasPorColocar").innerHTML = "Reinas por colocar: " + noReinas;
   document.getElementById("reinasColocadas").innerHTML = "Reinas colocadas: " + -(noReinas - 8);
 
+  if (noReinas == 0) {
+    alert("Felicidades, has ganado");
+  }
 }
+
 
 
 function soluciones(valor) {
@@ -234,7 +242,6 @@ function incrementQueenCount(celda) {
   queenCount++;
   celda.setAttribute('data-queen-count', queenCount.toString());
   if (queenCount == 1) {
-    //celda.removeAttribute("onclick");
     celda.style.backgroundColor = "#ff0000";
   }
 }
