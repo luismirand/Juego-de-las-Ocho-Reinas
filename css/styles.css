@@ -14,12 +14,12 @@ table {
 
   tr:nth-child(even) td:nth-child(even), tr:nth-child(odd) td:nth-child(odd)
         {
-            background: #c6c6d0;
+            background: #10a7d9;
         }
         
         tr:nth-child(odd) td:nth-child(even), tr:nth-child(even) td:nth-child(odd) 
         {
-            background: #261875;
+            background: #d3e9ff;
         }
 
 
@@ -28,7 +28,7 @@ table {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10px; /* Esto hará que el contenedor ocupe toda la altura de la ventana */
+    margin-top: 10px;
   }
   
   .chessboard-container h1 {
@@ -48,12 +48,18 @@ table {
   .game-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Esto centrará los elementos horizontalmente */
+    align-items: center; 
   }
   
   .options-container {
     display: flex;
   }
   #reinasColocadas {
-    margin-bottom: 20px; /* Ajusta esto para cambiar el espacio debajo del label */
+    margin-bottom: 20px; 
+  }
+
+  
+  #resetButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
