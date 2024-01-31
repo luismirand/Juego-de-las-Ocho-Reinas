@@ -9,7 +9,7 @@ function colocarReina(celda) {
       var renglon = celda.parentElement.rowIndex;
       var columna = celda.cellIndex;
       /* Bloqueamos renglon */
-      
+
       var tablero = document.getElementById("tabla");
       //alert(renglon + " " + columna);
       for (let i = 0; i < 8; i++) {
